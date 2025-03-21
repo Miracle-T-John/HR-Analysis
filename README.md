@@ -65,34 +65,49 @@ FROM sales_table
 GROUP BY product
 ORDER BY total_sales DESC
 ```
+### **3. Data Transformation**
+- **Tools Used**: SQL and Power Query in Power BI.
+- **Steps**:
+  1. Joined datasets using `Employee ID` as the primary key.
+  2. Created calculated columns (e.g., tenure, turnover status).
+  3. Aggregated data for key metrics (e.g., average attendance, turnover rate).
 
-### Result
+#### **SQL Code for Data Transformation**
+```sql
+-- Calculate employee tenure in years
+SELECT 
+    Employee_ID,
+    DATEDIFF(year, Hire_Date, GETDATE()) AS Tenure
+INTO 
+    Employee_Tenure
+FROM 
+    Employee_Data;
 
-The analysis results  are summarized as follows:
-1. The compay's sales peak in Q4 due to holiday season demand
-2.  No sales for Q4 in 2014 &  2016
-3. 35-64 age group generated the highest revenue
-4. Most profit made was in 2015
-5. December is when we make the most sales
-6. USA was the most profitable counter foi the business
- 7. Least revenue generated is in july
+-- Calculate turnover status
+SELECT 
+    Employee_ID,
+    CASE 
+        WHEN Termination_Date IS NOT NULL THEN 'Terminated'
+        ELSE 'Active'
+    END AS Turnover_Status
+INTO 
+    Turnover_Status
+FROM 
+    Employee_Data;
 
-### Recommendations
-• Focus on High-Performing Markets: Allocate more resources to the top 5 countries.
+-- Aggregate attendance data
+SELECT 
+    Employee_ID,
+    AVG(Days_Present) AS Avg_Attendance
+INTO 
+    Avg_Attendance
+FROM 
+    Attendance_Data
+GROUP BY 
+    Employee_ID;
+```
 
-• Target Key Demographics: Increase marketing efforts for the 35-64 age group.
-
-• Optimize Product Portfolio: Discontinue or improve underperforming products.
-
-• Leverage Seasonal Trends: Plan promotions during peak sales months.
-
-• Improve Profit Margins: Negotiate better supplier terms for products.
-
-• Expand Customer Base: Invest in customer acquisition strategies.
-
-• Enhance Data Collection: Improve data quality for more accurate analvsis.
-
-• Monitor KPIs Regularly: Establish a dashboard for real time performance tracking, in order to make data driven decisions
+---
 
 ### Limitations
  I had to recalculte the revenue, profit columns due to wrong calculations.  There were missig columns that  could have helep understand each unique customer's purchase patterns.
