@@ -7,13 +7,32 @@
 - [Recommendations](#recommendations)
 ### Project Overview
 
-This analysis aims to evaluate employee performance and demographic
+This project is designed to help HR professionals and analysst gain actionble insights into workforce data. The dashboard provides visualiztions and metrics for employee turnover, performance and more
 ### Data Source
-HR Data:  The primary dataset used for this analysis is the "sales_data.csv" file,made by the company.
+HR Data:  The primary dataset used for this analysis is the "Employee_data" file,made by the company.
+
+##Purpose
+The goal of this project was to create a centralized, interactive dashboard for HR teams to:
+- Track employee turnover and retention rates.
+- Average training cost per employee
+- Evaluate employee performance.
+- Analyze workforce diversity and inclusion metrics.
+
+
+## Development Process
+
+### 1. Data Collection
+- *Data Sources*: The project used two primary datasets:
+  1. *Employee Data*: Contains employee details such as name, department, hire date, and job title, performance ratings and feedback.
+  2. *Attendance Data*: Tracks employee attendance and leave records.
+
+- *Data Format*: All datasets were provided in CSV format.
 
 ### Tools 
 
 - PowerBI(PowerQuery)- Data cleaning
+- Pyhon(Pandas)-Data cleaning
+- PostgreeSQL
 - PowerBi- Visusalization
 
  ### Data Cleaning/Preparation
